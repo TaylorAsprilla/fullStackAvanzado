@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="containerIcon"></div>
+
+  <nav class="main-menu">
+    <ul>
+      @for (menu of menuItems; track $index) {
+      <li [class]="menu.classCss">
+        <i [class]="menu.icon"></i>
+        <a [routerLink]="menu.path">{{ menu.title }}</a>
+      </li>
+      @if (menu.submenu?.length ) {
+      <h1>submenu</h1>
+      <ul class="sub-menu">
+        <li [class]="menu.classCss">
+          <i [class]="menu.icon"></i>
+          <a [routerLink]="menu.path">{{ menu.title }}</a>
+        </li>
+      </ul>
+
+      } }
+    </ul>
+  </nav>
+</div>

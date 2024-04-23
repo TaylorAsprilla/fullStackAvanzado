@@ -1,0 +1,20 @@
+.textos {
+  text-align: center;
+  font-style: unset;
+  padding: 5px 40px;
+  width: 150px;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+span:nth-child(even) {
+  background-color: #080808;
+  color: white;
+}
+span:nth-child(odd) {
+  background-color: #edf2f3;
+}

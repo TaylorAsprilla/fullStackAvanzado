@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 15px;
+  box-shadow: 2px 2px 4px rgba(0, 1, 0, 0.1);
+  padding: 20px;
+}
+input {
+  padding: 15px 10px;
+  border: none;
+  border-bottom: solid 1px rgb(235, 233, 233);
+}
+button {
+  padding: 15px 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
