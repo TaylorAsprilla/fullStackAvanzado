@@ -1,0 +1,26 @@
+<h4 class="text-center">{{ titulo }}</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      @for (columna of columnas; track $index) {
+      <ng-container>
+        <td>{{ columna.toLocaleUpperCase() }}</td>
+      </ng-container>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of data; track $index) {
+
+    <tr>
+      @for (columna of columnas; track $index) {
+
+      <ng-container>
+        <td>{{ item[columna] }}</td>
+      </ng-container>
+      }
+    </tr>
+    }
+  </tbody>
+</table>

@@ -1,23 +1,49 @@
-<div class="container">
-  <div class="containerIcon"></div>
-
-  <nav class="main-menu">
-    <ul>
-      @for (menu of menuItems; track $index) {
-      <li [class]="menu.classCss">
-        <i [class]="menu.icon"></i>
-        <a [routerLink]="menu.path">{{ menu.title }}</a>
-      </li>
-      @if (menu.submenu?.length ) {
-      <h1>submenu</h1>
-      <ul class="sub-menu">
-        <li [class]="menu.classCss">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./assets/image/logo.png" width="30" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        @for (menu of menuItems; track $index) {
+        <li class="nav-item" [class]="menu.classCss">
           <i [class]="menu.icon"></i>
-          <a [routerLink]="menu.path">{{ menu.title }}</a>
+          <a class="nav-link" [routerLink]="menu.path">{{ menu.title }}</a>
         </li>
-      </ul>
+        @if (menu.subMenu.length > 0 ) {
 
-      } }
-    </ul>
-  </nav>
-</div>
+        <!-- Este es el subMenu -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          </a>
+          <ul class="dropdown-menu">
+            @for (subMenu of menu.subMenu; track $index) {
+            <li class="dropdown-item" [class]="subMenu.classCss">
+              <i [class]="subMenu.icon"></i>
+              <a [routerLink]="subMenu.path">{{ subMenu.title }}</a>
+            </li>
+            }
+          </ul>
+        </li>
+        } }
+      </ul>
+    </div>
+  </div>
+</nav>
