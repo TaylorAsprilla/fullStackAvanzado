@@ -18,4 +18,13 @@ export class TablaComponent implements OnInit {
   ngOnInit(): void {
     console.log('Personas en el componente hijo', this.data);
   }
+
+  formatearNombreDeColumnas(columna: string): string {
+    // Dividir el nombre por mayúsculas y unir con espacios
+    return columna.replace(/([a-z])([A-Z])/g, '$1 $2').toLocaleUpperCase();
+  }
+
+  isFecha(value: any): boolean {
+    return value instanceof Date;
+  }
 }

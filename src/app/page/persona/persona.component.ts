@@ -12,14 +12,7 @@ import { TablaComponent } from '../../components/tabla/tabla.component';
 export class PersonaComponent implements OnInit {
   personas: PersonaInterface[] = [];
   tituloTabla: string = 'Lista de Personas';
-  columnas: string[] = [
-    'nombre',
-    'fechaNacimiento',
-    'tipoDocumento',
-    'numeroCelular',
-    'email',
-    'peso',
-  ];
+  columnas: string[] = [];
 
   ngOnInit(): void {
     this.personas = [
@@ -59,6 +52,12 @@ export class PersonaComponent implements OnInit {
       },
     ];
 
-    console.log(this.personas);
+    this.obtenerColumnas(this.personas);
+  }
+
+  obtenerColumnas(personas: PersonaInterface[]) {
+    if (personas.length > 0) {
+      this.columnas = Object.keys(personas[0]);
+    }
   }
 }

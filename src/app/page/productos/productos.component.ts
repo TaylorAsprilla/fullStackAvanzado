@@ -13,7 +13,7 @@ import { ProductoInterface } from '../../core/interface/producto.interface';
 export class ProductosComponent implements OnInit {
   misProductos: ProductoInterface[] = [];
   titulo: string = 'Lista de Productos';
-  columnas: string[] = ['nombre', 'sku', 'cantidad', 'precio'];
+  columnas: string[] = [];
 
   ngOnInit(): void {
     this.misProductos = [
@@ -36,5 +36,13 @@ export class ProductosComponent implements OnInit {
         precio: 39900,
       },
     ];
+
+    this.obtenerColumnas(this.misProductos);
+  }
+
+  obtenerColumnas(productos: ProductoInterface[]) {
+    if (productos.length > 0) {
+      this.columnas = Object.keys(productos[0]);
+    }
   }
 }

@@ -5,7 +5,7 @@
     <tr>
       @for (columna of columnas; track $index) {
       <ng-container>
-        <td>{{ columna.toLocaleUpperCase() }}</td>
+        <th>{{ formatearNombreDeColumnas(columna) }}</th>
       </ng-container>
       }
     </tr>
@@ -14,12 +14,15 @@
     @for (item of data; track $index) {
 
     <tr>
-      @for (columna of columnas; track $index) {
-
+      @for (columna of columnas; track $index) { @if (isFecha(item[columna])) {
+      <ng-container>
+        <td>{{ item[columna] | date : "mediumDate" : "UTC" }}</td>
+      </ng-container>
+      } @else {
       <ng-container>
         <td>{{ item[columna] }}</td>
       </ng-container>
-      }
+      }}
     </tr>
     }
   </tbody>
