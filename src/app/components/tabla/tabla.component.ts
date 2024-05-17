@@ -24,16 +24,12 @@ export class TablaComponent implements OnInit, OnChanges {
 
   @Output() onInformacion: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit(): void {
-    console.info('Información que llega del padre');
-    console.log(this.data);
-    console.log(this.titulo);
-    console.log(this.columnas);
-    // this.columnas.push('acciones');
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Componente hijo', changes);
+    if (changes['data'] && changes['data'].currentValue) {
+      this.data = changes['data'].currentValue;
+    }
   }
 
   formatearNombreDeColumnas(columna: string): string {
