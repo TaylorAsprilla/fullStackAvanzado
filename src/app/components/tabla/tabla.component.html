@@ -1,29 +1,43 @@
 <h4 class="text-center">{{ titulo }}</h4>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      @for (columna of columnas; track $index) {
-      <ng-container>
-        <th>{{ formatearNombreDeColumnas(columna) }}</th>
-      </ng-container>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @for (item of data; track $index) {
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        @for (columna of columnas; track $index) {
+        <ng-container>
+          <th>{{ formatearNombreDeColumnas(columna) }}</th>
+        </ng-container>
+        }
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of data; track $index) {
 
-    <tr>
-      @for (columna of columnas; track $index) { @if (isFecha(item[columna])) {
-      <ng-container>
-        <td>{{ item[columna] | date : "mediumDate" : "UTC" }}</td>
-      </ng-container>
-      } @else {
-      <ng-container>
-        <td>{{ item[columna] }}</td>
-      </ng-container>
-      }}
-    </tr>
-    }
-  </tbody>
-</table>
+      <tr>
+        @for (columna of columnas; track $index) { @if (isFecha(item[columna]))
+        {
+        <ng-container>
+          <td>{{ item[columna] | date : "mediumDate" : "UTC" }}</td>
+        </ng-container>
+        } @else {
+        <ng-container>
+          <td>{{ item[columna] }}</td>
+        </ng-container>
+        } }
+        <td class="text-center">
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="enviarInformacion(item)"
+          >
+            Info
+          </button>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+</div>
