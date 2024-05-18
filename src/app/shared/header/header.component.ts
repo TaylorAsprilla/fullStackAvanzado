@@ -15,6 +15,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = MenuRoutes;
-    console.log(this.menuItems);
   }
 }

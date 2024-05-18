@@ -42,7 +42,6 @@ export class TablaComponent implements OnInit, OnChanges {
   }
 
   enviarInformacion(data: any) {
-    console.log('Data componente hijo', data);
     //Emite el evento con la información de *data*
     this.onInformacion.emit(data);
   }

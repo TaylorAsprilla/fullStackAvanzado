@@ -29,7 +29,6 @@ export class UsuariosComponent implements OnInit {
   obtenerColumnas(usuarios: UsuarioModel[]) {
     if (usuarios.length > 0) {
       this.columnas = Object.keys(usuarios[0]);
-      console.log(this.columnas);
     }
   }
 
