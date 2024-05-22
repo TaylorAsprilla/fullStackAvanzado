@@ -1,0 +1,92 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div
+        class="col-md-9 col-lg-6 col-xl-5 d-none d-sm-none d-md-none d-lg-block"
+      >
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid"
+          alt="Sample image"
+        />
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="text-center">
+          <img
+            src="assets/image/logo.png"
+            width="30%"
+            alt="Congregación Mita INC"
+            class="img-fluid"
+          />
+        </div>
+
+        <form
+          [formGroup]="loginForm"
+          autocomplete="off"
+          class="form-signin"
+          (ngSubmit)="login()"
+        >
+          <h2 class="mb-3 text-center">Iniciar Sesión</h2>
+
+          <div class="form-outline mb-4">
+            <input
+              type="email"
+              formControlName="email"
+              class="form-control form-control-lg"
+              placeholder="Correo electrónico"
+            />
+
+            @if (isLogin && formLogin['email'].errors) {
+            <small class="text-danger">
+              El correo electrónico es requerido
+            </small>
+            } @if ( formLogin['email'].hasError('email') &&
+            formLogin['email'].touched ) {
+            <small class="text-danger"> Debe ser un correo electrónico </small>
+            }
+          </div>
+
+          <div>
+            <div class="input-group form-outline mb-3">
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control form-control-lg"
+                placeholder="Contraseña"
+              />
+            </div>
+
+            @if (!!isLogin && formLogin['password'].hasError('required') ) {
+            <small class="text-danger"> El password es Obligarotio </small>
+            } @if (!!isLogin && formLogin['password'].hasError('minlength') ) {
+            <small class="text-danger">
+              La longitud de la contraseña debe ser mayor a 3 caracteres
+            </small>
+            }
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="form-check mb-0">
+              <input
+                class="form-check-input me-2"
+                type="checkbox"
+                formControlName="remember"
+                id="recordar"
+              />
+              <label class="form-check-label mt-3" for="recordar">
+                Recordar
+              </label>
+            </div>
+            <a href="" class="text-body">¿Has olvidado tu contraseña?</a>
+          </div>
+
+          <div class="text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Iniciar Sesión
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

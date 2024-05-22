@@ -10,6 +10,7 @@ import { PersonaComponent } from './page/persona/persona.component';
 import { UsuariosComponent } from './page/usuarios/usuarios.component';
 import { ProductosComponent } from './page/administrar-productos/productos/productos.component';
 import { CrearproductosComponent } from './page/administrar-productos/crearproductos/crearproductos.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
   {
@@ -67,5 +68,10 @@ export const routes: Routes = [
         component: ContactoComponent,
       },
     ],
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
