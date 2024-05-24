@@ -4,8 +4,9 @@ import { ProductoInterface } from '../../../core/interface/producto.interface';
 import Swal from 'sweetalert2';
 import { ProductosService } from '../../../services/productos/productos.service';
 import { ProductoModel } from '../../../core/models/producto.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PATH } from '../../../core/enum/path.enum';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-productos',
@@ -18,24 +19,26 @@ export class ProductosComponent implements OnInit {
   misProductos: ProductoInterface[] = [];
   productos: ProductoModel[] = [];
 
+  productosResolver: any;
+
   titulo: string = 'Lista de Productos';
   columnas: string[] = [];
   informacion: ProductoModel | undefined;
 
-  private productosService = inject(ProductosService);
   private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+  private productosService = inject(ProductosService);
 
   ngOnInit(): void {
-    this.productosService
-      .getProductos()
-      .subscribe((productos: ProductoModel[]) => {
-        this.productos = productos;
-        this.misProductos = productos.map((producto) =>
-          this.resumenDeProducto(producto)
-        );
+    this.cargarProductos();
+  }
 
-        this.obtenerColumnas(this.misProductos);
-      });
+  cargarProductos() {
+    this.activatedRoute.data.subscribe(({ productos }) => {
+      this.misProductos = productos;
+    });
+
+    this.obtenerColumnas(this.misProductos);
   }
 
   resumenDeProducto(producto: ProductoModel): ProductoInterface {
@@ -89,5 +92,12 @@ export class ProductosComponent implements OnInit {
 
   crearProductos() {
     this.router.navigateByUrl(`${PATH.CREAR_PRODUCTOS}`);
+  }
+
+  eliminar(data: ProductoModel) {
+    this.productosService.eliminarProducto(data._id).subscribe((resp: any) => {
+      Swal.fire('Producto Eliminado', `${resp.msg}`, 'success');
+      this.cargarProductos();
+    });
   }
 }

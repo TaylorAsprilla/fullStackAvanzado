@@ -11,11 +11,18 @@ import { UsuariosComponent } from './page/usuarios/usuarios.component';
 import { ProductosComponent } from './page/administrar-productos/productos/productos.component';
 import { CrearproductosComponent } from './page/administrar-productos/crearproductos/crearproductos.component';
 import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './core/guards/auth/auth.guard';
+import { productosResolver } from './core/resolvers/productos/productos.resolver';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: PATH.HOME,
     title: 'Home',
+    canActivate: [authGuard],
     children: [
       {
         path: PATH.HOME,
@@ -36,6 +43,9 @@ export const routes: Routes = [
         path: PATH.PRODUCTOS,
         title: 'Mis productos',
         component: ProductosComponent,
+        resolve: {
+          productos: productosResolver,
+        },
       },
       {
         path: PATH.CREAR_PRODUCTOS,
@@ -68,10 +78,5 @@ export const routes: Routes = [
         component: ContactoComponent,
       },
     ],
-  },
-
-  {
-    path: 'login',
-    component: LoginComponent,
   },
 ];

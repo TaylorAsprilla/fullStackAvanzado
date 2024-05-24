@@ -23,6 +23,7 @@ export class TablaComponent implements OnInit, OnChanges {
   @Input() columnas: string[] = [];
 
   @Output() onInformacion: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onEliminar: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {}
 
@@ -44,5 +45,9 @@ export class TablaComponent implements OnInit, OnChanges {
   enviarInformacion(data: any) {
     //Emite el evento con la información de *data*
     this.onInformacion.emit(data);
+  }
+
+  eliminar(data: any) {
+    this.onEliminar.emit(data);
   }
 }

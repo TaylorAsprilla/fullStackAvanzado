@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             html: `Bienvenido ${nombre}`,
           }).then(() => {
-            this.router.navigateByUrl(PATH.INICIO);
+            this.router.navigateByUrl(PATH.ACERCADE);
           });
         }
       },

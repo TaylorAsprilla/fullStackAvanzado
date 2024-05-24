@@ -2,6 +2,7 @@ import { distribuidorInterface } from '../interface/producto.interface';
 
 export class ProductoModel {
   constructor(
+    public readonly _id: string,
     public nombre: string,
     public sku: string,
     public cantidad: number,
