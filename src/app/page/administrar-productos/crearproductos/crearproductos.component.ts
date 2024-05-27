@@ -11,11 +11,12 @@ import {
   ProductoInterface,
 } from '../../../core/interface/producto.interface';
 import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crearproductos',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './crearproductos.component.html',
   styleUrl: './crearproductos.component.css',
 })

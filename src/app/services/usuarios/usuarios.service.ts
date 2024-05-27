@@ -6,6 +6,7 @@ import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { PATH } from '../../core/enum/path.enum';
 import { UsuarioModel } from '../../core/models/usuario.model';
+import { crearUsuarioInterface } from '../../core/interface/usuario.interface';
 
 const base_url = environment.base_url;
 @Injectable({
@@ -20,6 +21,12 @@ export class UsuariosService {
 
   get token(): string {
     return localStorage.getItem('token') || '';
+  }
+
+  get headers() {
+    return {
+      headers: { 'x-token': this.token },
+    };
   }
 
   validateToken(): Observable<boolean> {
@@ -82,6 +89,26 @@ export class UsuariosService {
   }
 
   getUsuarios() {
-    return this.httpClient.get(`${base_url}/usuario`);
+    return this.httpClient.get(`${base_url}/usuario`, this.headers);
+  }
+
+  getUnUsuario(id: string) {
+    return this.httpClient.get(`${base_url}/usuario/${id}`, this.headers);
+  }
+
+  crearUsuario(usuario: crearUsuarioInterface) {
+    return this.httpClient.post(`${base_url}/usuario/`, usuario, this.headers);
+  }
+
+  actualizarUsuario(usuario: UsuarioModel) {
+    return this.httpClient.put(
+      `${base_url}/usuario/${usuario._id}`,
+      usuario,
+      this.headers
+    );
+  }
+
+  eliminarUsuario(id: string) {
+    return this.httpClient.delete(`${base_url}/usuario/${id}`, this.headers);
   }
 }
