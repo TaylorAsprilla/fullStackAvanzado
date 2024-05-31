@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, CanActivateFn } from '@angular/router';
 import { PATH } from './core/enum/path.enum';
 import { AcercaDeComponent } from './page/acerca-de/acerca-de.component';
 import { ArticuloComponent } from './page/articulo/articulo.component';
@@ -7,12 +7,13 @@ import { ImagenesComponent } from './page/imagenes/imagenes.component';
 import { InicioComponent } from './page/inicio/inicio.component';
 import { NombresComponent } from './page/nombres/nombres.component';
 import { PersonaComponent } from './page/persona/persona.component';
-import { UsuariosComponent } from './page/usuarios/usuarios.component';
 import { ProductosComponent } from './page/administrar-productos/productos/productos.component';
 import { CrearproductosComponent } from './page/administrar-productos/crearproductos/crearproductos.component';
 import { LoginComponent } from './auth/login/login.component';
 import { authGuard } from './core/guards/auth/auth.guard';
 import { productosResolver } from './core/resolvers/productos/productos.resolver';
+import { UsuariosComponent } from './page/administrar-usuarios/usuarios/usuarios.component';
+import { CrearUsuariosComponent } from './page/administrar-usuarios/crear-usuarios/crear-usuarios.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,18 @@ export const routes: Routes = [
         path: PATH.USUARIO,
         title: 'Usuarios',
         component: UsuariosComponent,
+      },
+
+      //TODO
+      // Editar usuario
+      // localhost:4200/191928282
+
+      // Crear Usuario
+      // localhost:4200/nuevo
+      {
+        path: `${PATH.CREAR_USUARIOS}/:id`,
+        title: 'Crear Usuarios',
+        component: CrearUsuariosComponent,
       },
       {
         path: PATH.PRODUCTOS,

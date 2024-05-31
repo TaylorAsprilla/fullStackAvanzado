@@ -1,0 +1,49 @@
+<h2 class="text-center">Crear Usuario</h2>
+
+<form [formGroup]="usuariosForm" (ngSubmit)="crearUsuario()">
+  <div class="mb-3">
+    <label class="form-label"> Nombre</label>
+    <input type="text" class="form-control" formControlName="nombre" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Correo Electrónico</label>
+    <input type="text" class="form-control" formControlName="email" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Tipo de Documento</label>
+    <select class="form-select" formControlName="tipoDocumento">
+      <option value="" disabled>Seleccione un tipo de documento</option>
+      <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+      <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+      <option value="Pasaporte">Pasaporte</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Número de Documento</label>
+    <input type="text" class="form-control" formControlName="numeroDocumento" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Rol</label>
+    <select class="form-select" formControlName="rol">
+      <option value="" disabled>Seleccione un rol</option>
+      <option value="USER">Usuario</option>
+      <option value="ADMIN">Administrador</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Peso</label>
+    <input type="number" class="form-control" formControlName="peso" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label"> Fecha de Nacimiento</label>
+    <input type="date" class="form-control" formControlName="fechaNacimiento" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear Usuario</button>
+</form>

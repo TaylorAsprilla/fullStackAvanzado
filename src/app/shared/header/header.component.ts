@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { MenuInfoInterface } from '../../core/interface/menu_info.interface';
 import { MenuRoutes } from '../../menu/menu';
 import { UsuariosService } from '../../services/usuarios/usuarios.service';
+import { RolDirective } from '../../core/directives/rol/rol.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RolDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

@@ -93,11 +93,12 @@ export class UsuariosService {
   }
 
   getUnUsuario(id: string) {
+    console.log('id', id);
     return this.httpClient.get(`${base_url}/usuario/${id}`, this.headers);
   }
 
   crearUsuario(usuario: crearUsuarioInterface) {
-    return this.httpClient.post(`${base_url}/usuario/`, usuario, this.headers);
+    return this.httpClient.post(`${base_url}/usuario`, usuario, this.headers);
   }
 
   actualizarUsuario(usuario: UsuarioModel) {

@@ -7,6 +7,7 @@ import { NombresComponent } from './page/nombres/nombres.component';
 import { PersonaComponent } from './page/persona/persona.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { RolDirective } from './core/directives/rol/rol.directive';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ImagenesComponent,
     HeaderComponent,
     FooterComponent,
+    RolDirective,
   ],
 })
 export class AppComponent {
