@@ -45,5 +45,15 @@
     <input type="date" class="form-control" formControlName="fechaNacimiento" />
   </div>
 
+  <div class="mb-3">
+    <label class="form-label"> Elige un País</label>
+    <select class="form-select" formControlName="paises">
+      <option value="" disabled>Seleccione un rol</option>
+      @for (pais of paises; track $index) {
+      <option [value]="pais.nombre">{{ pais.nombre }}</option>
+      }
+    </select>
+  </div>
+
   <button type="submit" class="btn btn-primary">Crear Usuario</button>
 </form>

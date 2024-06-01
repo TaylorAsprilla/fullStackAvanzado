@@ -14,6 +14,7 @@ import { authGuard } from './core/guards/auth/auth.guard';
 import { productosResolver } from './core/resolvers/productos/productos.resolver';
 import { UsuariosComponent } from './page/administrar-usuarios/usuarios/usuarios.component';
 import { CrearUsuariosComponent } from './page/administrar-usuarios/crear-usuarios/crear-usuarios.component';
+import { paisesResolver } from './core/resolvers/paises/paises.resolver';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,9 @@ export const routes: Routes = [
         path: `${PATH.CREAR_USUARIOS}/:id`,
         title: 'Crear Usuarios',
         component: CrearUsuariosComponent,
+        resolve: {
+          paises: paisesResolver,
+        },
       },
       {
         path: PATH.PRODUCTOS,

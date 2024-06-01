@@ -12,6 +12,7 @@ import { crearUsuarioInterface } from '../../../core/interface/usuario.interface
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioModel } from '../../../core/models/usuario.model';
 import { PATH } from '../../../core/enum/path.enum';
+import { PaisModel } from '../../../core/models/pais.model';
 
 @Component({
   selector: 'app-crear-usuarios',
@@ -24,6 +25,7 @@ export class CrearUsuariosComponent implements OnInit, OnDestroy {
   usuariosForm: FormGroup;
   usuarioSubscription: Subscription;
   usuarioSeleccionado: UsuarioModel;
+  paises: PaisModel[] = [];
 
   private formBuilder = inject(FormBuilder);
   private usauriosService = inject(UsuariosService);
@@ -33,6 +35,10 @@ export class CrearUsuariosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({ id }) => {
       this.buscarUsuario(id);
+    });
+
+    this.activatedRoute.data.subscribe(({ paises }) => {
+      this.paises = paises;
     });
 
     this.crearFormulario();
@@ -51,6 +57,7 @@ export class CrearUsuariosComponent implements OnInit, OnDestroy {
       rol: ['', [Validators.required]],
       peso: ['', []],
       fechaNacimiento: ['', [Validators.required]],
+      paises: ['', []],
     });
   }
 
