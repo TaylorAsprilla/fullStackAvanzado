@@ -1,0 +1,47 @@
+En Javascript existen cuatro formas de crear funciones:
+
+1- FUNCIÓN DECLARADA (FUNCTION DECLARATION)
+Esta es una forma estándar de declarar una función en JavaScript. Se escriben con la palabra reservada function seguida del nombre de la
+función, los parámetros entre paréntesis y el cuerpo de la función entre llaves, ejemplo:
+
+function sumar(a, b) {
+  let resultado = a + b;
+  return resultado;
+};
+
+//Llamado de la funcion
+sumar(2, 3);
+
+
+2- FUNCIÓN EXPRESADA (FUNCTION EXPRESSION)
+Una función de expresión o expresada es una forma de crear una función y asignarla a una variable. El nombre de la función es opcional y, si
+se proporciona, solo es accesible dentro de la función, ejemplo:
+
+const sumar2 = function () {
+  console.log(3 + 3);
+};
+
+//Llamado de la función
+sumar2();
+
+
+3- FUNCION ANONIMA
+Esta es una función sin nombre que se invoca inmediatamente después de su declaración, la invocacion se hace colocando parentesis al final,
+ejemplo:
+
+(function() {
+  console.log("Función anónima invocada");
+})();
+
+
+4- FUNCION FLECHA (ARROY FUNCTION)
+Una función flecha es una forma concisa de escribir una función en JavaScript. Se escribe con la palabra clave "=>" seguida del cuerpo de la
+función, ejemplo:
+
+const resta = (a, b) => {
+  return a - b;
+};
+
+//Llamado de la funcion
+console.log(resta(5, 3));
+
